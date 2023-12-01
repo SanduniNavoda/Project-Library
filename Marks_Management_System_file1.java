@@ -171,6 +171,41 @@ class Example {
     }
     //---------------------------Add new student------------------------------------------
 
+    //----------------------------get marks method----------------------------------------------
+
+    public static int setMarks(boolean isValid, Scanner object) {
+        int marks = -1;
+        if (isValid) {
+            int input = object.nextInt();
+            if (input >= 0 && input <= 100) {
+                marks = input;
+            } else {
+                System.out.println("Invalid marks, please enter correct marks.");
+                System.out.println();
+            }
+        }
+        return marks;
+    }
+
+    //----------------------------get marks method----------------------------------------------
+
+    //----------------------------Check marks method--------------------------------------------
+
+    public static boolean checkMarks(Scanner object){
+        boolean isValid;
+            if (object.hasNextInt()){
+                isValid = true;
+                
+            }else{
+                System.out.println("Invalid Input, please enter a number");
+                System.out.println();
+                isValid = false;
+                object.next();
+            }
+        return isValid;        
+    }
+    //----------------------------Check marks method--------------------------------------------
+
 
     //---------------------------Add new student with marks--------------------------------
     public static void addNewStudentWithMarks() {
@@ -205,33 +240,20 @@ class Example {
 
             int pfMarks;
             boolean isValid;
-            do {
-                System.out.println();
-                System.out.print("Programming Fundamentals Marks : ");
-                pfMarks = input.nextInt();
-                if (pfMarks >= 0 && pfMarks <= 100)
-                    isValid = true;
-                else {
-                    System.out.println("Invalid marks, please enter correct marks.");
-                    System.out.println();
-                    isValid = false;
-                }
-
-            } while (!isValid);
+           do {
+                isValid = true;
+                System.out.print("Programming Fundamentals Marks: ");
+                isValid = checkMarks(input);
+                pfMarks = setMarks(isValid, input);
+            } while (!isValid || pfMarks > 100 || pfMarks < 0);
 
             int dbmsMarks;
             do {
-                System.out.print("Database Management System Marks : ");
-                dbmsMarks = input.nextInt();
-                if (dbmsMarks >= 0 && dbmsMarks <= 100)
-                    isValid = true;
-                else {
-                    System.out.println("Invalid marks, please enter correct marks.");
-                    System.out.println();
-                    isValid = false;
-                }
-
-            } while (!isValid);
+                isValid = true;
+                System.out.print("Database Management System Marks: ");
+                isValid = checkMarks(input);
+                dbmsMarks = setMarks(isValid, input); 
+            } while (!isValid || dbmsMarks > 100 || dbmsMarks < 0);
 
             String[] tempId = new String[idArray.length + 1];
             String[] tempName = new String[nameArray.length + 1];
@@ -290,7 +312,6 @@ class Example {
         Scanner input = new Scanner(System.in);
 
         String id;
-        //String name = "";
         int index = 0;
         String option;
 
@@ -299,7 +320,6 @@ class Example {
 
 
             //--------------search whether marks have been already added-------------------------------------
-            //boolean isAdded = true;
             boolean isValid;
             do {
                 boolean isExist = false;
@@ -313,7 +333,6 @@ class Example {
                         if (id.equals(idArray[i])) {
                             isExist = true;
                             index = i;
-                            //name = nameArray[i];
                         }
                     }
                     if (isExist) {
@@ -361,29 +380,19 @@ class Example {
 
             int pfMarks;
             do {
-                System.out.print("Programming Fundamentals Marks : ");
-                pfMarks = input.nextInt();
-                if (!(pfMarks >= 0 && pfMarks <= 100)){
-                    System.out.println("Invalid marks, please enter correct marks.");
-                    System.out.println();
-                    isValid = false;
-                } else {
-                    isValid = true;
-                }
-            } while (!isValid);
+                isValid = true;
+                System.out.print("Programming Fundamentals Marks: ");
+                isValid = checkMarks(input);
+                pfMarks = setMarks(isValid, input);
+            } while (!isValid || pfMarks > 100 || pfMarks < 0);
 
             int dbmsMarks;
             do {
-                System.out.print("Database Management System Marks : ");
-                dbmsMarks = input.nextInt();
-                if (!(dbmsMarks >= 0 && dbmsMarks <= 100)){
-                    System.out.println("Invalid marks, please enter correct marks.");
-                    System.out.println();
-                    isValid = false;
-                } else {
-                    isValid = true;
-                }
-            } while (!isValid);
+                isValid = true;
+                System.out.print("Database Management System Marks: ");
+                isValid = checkMarks(input);
+                dbmsMarks = setMarks(isValid, input); 
+            } while (!isValid || dbmsMarks > 100 || dbmsMarks < 0);
 
             //-----enter marks into array starts----------------------
 
@@ -568,32 +577,24 @@ class Example {
             System.out.println("Database Management Systems Marks : " + dbmsMarksArray[index]);
             System.out.println();
 
-            //boolean isValid;
+            
+            int pfMarks;
             do {
+                isValid = true;
                 System.out.print("Enter new Programming Fundamental Marks : ");
-                int pfMarks = input.nextInt();
-                if (pfMarks >= 0 && pfMarks <= 100) {
-                    isValid = true;
-                    programmingFundamentalMarksArray[index] = pfMarks;
-                } else {
-                    System.out.println("Invalid marks, please enter correct marks.");
-                    System.out.println();
-                    isValid = false;
-                }
-            } while (!isValid);
+                isValid = checkMarks(input);
+                pfMarks = setMarks(isValid, input);
+                programmingFundamentalMarksArray[index] = pfMarks;
+            } while (!isValid || pfMarks > 100 || pfMarks < 0);
 
+            int dbmsMarks;
             do {
+                isValid = true;
                 System.out.print("Enter new Database Management System Marks : ");
-                int dbmsMarks = input.nextInt();
-                if (dbmsMarks >= 0 && dbmsMarks <= 100) {
-                    isValid = true;
-                    dbmsMarksArray[index] = dbmsMarks;
-                } else {
-                    System.out.println("Invalid marks, please enter correct marks.");
-                    System.out.println();
-                    isValid = false;
-                }
-            } while (!isValid);
+                isValid = checkMarks(input);
+                dbmsMarks = setMarks(isValid, input);
+                dbmsMarksArray[index] = dbmsMarks;
+            } while (!isValid || dbmsMarks > 100 || dbmsMarks < 0);
 
             System.out.println();
             do{
@@ -883,7 +884,16 @@ class Example {
             findAverage();
             System.out.println("|Average Marks\t\t\t\t|" + "\t\t" + avgArray[newIndex] + "\t\t|");
             findRank();
-            System.out.println("|Rank\t\t\t\t\t|" + "\t\t" + ((rankArray[newIndex] == 1)? "1 (First)\t|" : (rankArray[newIndex] == 2) ? " 2 (Second)\t|" : (rankArray[newIndex] == 3) ? "3 (Third)\t|" : (rankArray[newIndex] == rankArray.length) ? rankArray[newIndex] + "(Last)\t|" : (rankArray[newIndex]) + "\t|\t"));
+
+            int max = 0;
+            for(int i = 0; i < rankArray.length; i++){
+                if(rankArray[i] > max){
+                    max = rankArray[i];
+                }
+            }
+
+
+            System.out.println("|Rank\t\t\t\t\t|" + "\t\t" + ((rankArray[newIndex] == 1)? "1 (First)\t|" : (rankArray[newIndex] == 2) ? " 2 (Second)\t|" : (rankArray[newIndex] == 3) ? "3 (Third)\t|" : (rankArray[newIndex] == max) ? rankArray[newIndex] + " (Last)\t|" : (rankArray[newIndex]) + "\t|\t"));
             System.out.println("+---------------------------------------+-------------------------------+");
 
 
@@ -1023,10 +1033,7 @@ class Example {
             rankArrCopy[i][1] = rankArray[i];
         }
 
-        for(int i = 0; i < rankArrCopy.length; i++){
-            System.out.println(rankArrCopy[i][0] + " " + rankArrCopy[i][1]);
-        }
-        System.out.println();
+    
 
         for(int j = rankArrCopy.length - 1; j >= 0; j--){
             for(int i = 0; i < j; i++){
@@ -1038,6 +1045,7 @@ class Example {
             }
         }
 
+        System.out.println();
         System.out.println("+-------+-------+-----------------------+---------------+---------------+");
         System.out.println("|Rank\t|ID\t|Name\t\t\t|Total Marks\t|Avg. Marks\t|");
         for(int i = 0; i < modIdArray.length; i++){
