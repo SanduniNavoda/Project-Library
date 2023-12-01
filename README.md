@@ -17,13 +17,13 @@ This Java application is designed to manage student marks for an institute. The 
   - [Add New Student with Marks](#add-new-student-with-marks)
   - [Add Marks](#add-marks)
   - [Update Student Details](#update-student-details)
-  - [Update Marks](#update-marks)
+  - [Update Student Marks](#update-student-marks)
   - [Delete Student](#delete-student)
   - [Print Student Details](#print-student-details)
   - [Print Student Ranks](#print-student-ranks)
   - [Best in Programming Fundamentals](#best-in-programming-fundamentals)
   - [Best in Database Management System](#best-in-database-management-system)
-- [Guidelines Followed](#guidelines)
+- [Guidelines Followed](#guidelines-followed)
 
 ## Features
 
@@ -35,6 +35,39 @@ This Java application is designed to manage student marks for an institute. The 
 - **Delete Student.**
 - **View detailed student information and rankings.**
 - **Identify the best-performing students in Programming Fundamentals and Database Management System.**
+
+## Getting Started
+
+Follow these steps to get started with the project:
+
+### Prerequisites
+
+Make sure you have the following prerequisites installed on your machine:
+
+- [Java SE](https://www.oracle.com/java/technologies/javase-downloads.html) installed on your machine.
+- A code editor such as [Visual Studio Code](https://code.visualstudio.com/), [IntelliJ IDEA](https://www.jetbrains.com/idea/), or [Eclipse](https://www.eclipse.org/) installed.
+
+### Installation
+
+
+
+1. Clone the repository to your local machine:
+
+    ```bash
+    git clone git@github.com:SanduniNavoda/Project-Library.git
+    ```
+
+2. Compile the Java application:
+
+    ```bash
+    javac MarksManagement.java
+    ```
+
+3. Run the Java application:
+
+    ```bash
+    java MarksManagement
+    ```
 
 
 ## Usage
@@ -75,7 +108,7 @@ Update existing student details by entering a valid Student ID. Users can modify
 ![image](https://github.com/SanduniNavoda/Project-Library/assets/152306126/39842627-731c-4427-b0bc-beec5d1b5278)
 
 
-### Update Students' Marks
+### Update Student Marks
 
 Update previously assigned marks by providing the Student ID. Validation ensures only valid updates are accepted.
 
